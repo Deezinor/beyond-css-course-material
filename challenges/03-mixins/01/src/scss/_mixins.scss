@@ -1,0 +1,7 @@
+$clr1: purple;
+$clr2: blue;
+$deg: 45deg;
+
+@mixin linearGradient ($clr1: purple, $clr2: blue, $deg: 45deg) {
+    background-image: linear-gradient($deg, $clr1, $clr2);
+}

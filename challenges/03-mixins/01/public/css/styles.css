@@ -1,0 +1,86 @@
+body {
+  font-family: system-ui;
+  margin: 0;
+}
+
+.section-one,
+.section-two,
+.section-three {
+  text-align: center;
+  padding: 10vh 0;
+}
+
+.title::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 1px;
+  background-color: white;
+  margin: 2rem auto;
+}
+
+.section-one {
+  background-image: linear-gradient(45deg, purple, blue);
+  color: white;
+}
+
+.section-two {
+  background-image: linear-gradient(45deg, green, yellow);
+  color: white;
+}
+
+.section-three {
+  background-image: linear-gradient(-45deg, rgb(231, 83, 108), rgb(87, 212, 93));
+  color: white;
+}
+
+.button-one {
+  padding: 10px 16.1px;
+  color: white;
+  background-color: blue;
+}
+.button-one:hover, .button-one:focus {
+  color: white;
+  background-color: rgba(0, 0, 255, 0.8);
+}
+
+.button-two {
+  padding: 1rem 1.61rem;
+  color: white;
+  background-color: rgb(26, 68, 21);
+}
+.button-two:hover, .button-two:focus {
+  color: white;
+  background-color: rgba(26, 68, 21, 0.8);
+}
+
+.button-three {
+  padding: 1rem 1.61rem;
+  color: white;
+  background-color: rgb(187, 31, 166);
+}
+.button-three:hover, .button-three:focus {
+  color: white;
+  background-color: rgba(187, 31, 166, 0.8);
+}
+
+.badge--one {
+  padding: 10px 16.1px;
+  color: white;
+  background-color: blue;
+}
+.badge--one:hover, .badge--one:focus {
+  color: white;
+  background-color: rgba(0, 0, 255, 0.8);
+}
+.badge--two {
+  padding: 10px 16.1px;
+  color: white;
+  background-color: rgb(212, 6, 6);
+}
+.badge--two:hover, .badge--two:focus {
+  color: white;
+  background-color: rgba(212, 6, 6, 0.8);
+}
+
+/*# sourceMappingURL=styles.css.map */
