@@ -1,26 +1,37 @@
-@mixin linearGradient ($clr1: purple, $clr2: blue, $deg: 45deg) {
+$clr1: rgba(26, 68, 21, 1);
+
+@mixin linearGradient($clr1: purple, $clr2: blue, $deg: 45deg) {
   background-image: linear-gradient($deg, $clr1, $clr2);
   color: white;
 }
 
-@mixin pseudo-underline ($width, $height, $bg) {
-  content: '';
+@mixin pseudo-underline($width, $height, $bg) {
+  content: "";
   display: block;
   width: $width;
   height: $height;
   background-color: $bg;
   margin: 2rem auto;
-
 }
 
-@mixin ui-element ($size, $clr, $bg-clr, $hvr-clr: white) {
-  padding: $size $size * 1.61;
-  color: $clr;
-  background-color: $bg-clr;
-
-  &:hover, &:focus {
-    color: $hvr-clr;
-    background-color: rgba($bg-clr, 0.8);
+@mixin ui-element(
+  $size,
+  $color,
+  $bg,
+  $hover-color: $color,
+  $hover-bg: $bg,
+  $hover: true
+) {
+  display: inline-block;
+  padding: $size ($size * 3);
+  color: $color;
+  background-color: $bg;
+  @if $hover-color != $color or $hover-bg != $bg {
+    &:hover,
+    &:focus {
+      color: $hover-color;
+      background-color: $hover-bg;
+    }
   }
 }
 
@@ -34,11 +45,10 @@ body {
 .section-three {
   text-align: center;
   padding: 10vh 0;
-
 }
 
 .title::after {
-  @include pseudo-underline (5rem, 1px, white);
+  @include pseudo-underline(5rem, 1px, white);
 }
 
 .section-one {
@@ -50,7 +60,11 @@ body {
 }
 
 .section-three {
-  @include linearGradient($deg: -45deg, $clr1:rgb(231, 83, 108), $clr2:rgb(87, 212, 93));
+  @include linearGradient(
+    $clr1,
+    $deg: -45deg,
+    $clr2: rgb(231, 83, 108),
+  );
 }
 
 .button-one {
@@ -58,19 +72,14 @@ body {
 }
 
 .button-two {
-  @include ui-element(1rem, white, rgb(26, 68, 21));
-}
-
-.button-three {
-  @include ui-element(1rem, white, rgb(187, 31, 166));
+  @include ui-element(1rem, white, $bg:rgba($clr1, 1), $hover-color: black, $hover-bg: rgba($clr1, .7));
 }
 
 .badge {
-
   &--one {
-  @include ui-element(10px, white, blue)
+    @include ui-element(10px, white, blue, $hover-color: black);
   }
   &--two {
-  @include ui-element(10px, white, rgb(212, 6, 6))
+    @include ui-element(10px, white, rgb(212, 6, 6));
   }
 }
