@@ -1,0 +1,51 @@
+@use "sass:map";
+@use "sass:math";
+
+$breakpoints: (
+  small: 30em,
+  medium: 45em,
+  large: 65em,
+  xl: 80em,
+);
+
+@mixin mq($size) {
+  @if map-has-key($breakpoints, $size) {
+    $breakpoint: map.get($breakpoints, $size);
+
+    @media screen and (min-width: $breakpoint) {
+      @content;
+    }
+    
+  } @else if type-of($size) == number {
+    @if math.is-unitless($size) {
+      @error 'when using a number with @mq() make sure to include a unit';
+    } @else {
+      @media screen and (min-width: $size) {
+        @content;
+      }
+    }
+  } @else {
+    @error '#{$size} is not included in the $breakpoints map.';
+  }
+}
+
+body {
+  // all of these should work
+  @include mq(medium) {
+    background: pink;
+  }
+  @include mq(500px) {
+    background: lightblue;
+  }
+  @include mq(100em) {
+    background: #efefef;
+  }
+
+  // these should fail, with an error telling me why
+  @include mq(43px) {
+    background: yellow;
+  }
+  @include mq(5000px) {
+    background: purple;
+  }
+}
